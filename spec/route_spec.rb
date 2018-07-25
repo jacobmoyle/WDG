@@ -9,5 +9,25 @@ RSpec.describe TrainNavigator::Route do
     end
 
   end
+
+  describe '#edges' do
+    
+    it 'returns a collection' do
+      expect(TrainNavigator::Route.new([]).edges.empty?).to be true
+    end
+    
+    it 'return a valid collection' do
+      expect(TrainNavigator::Route.new(['A']).edges.empty?).to be true
+      expect(TrainNavigator::Route.new(['A', 'B']).edges.empty?).to be false
+    end
+
+    it 'returns node pairs' do
+      route = TrainNavigator::Route.new(['A', 'B', 'C'])
+      node_pairs = ['AB', 'BC']
+
+      expect(route.edges).to eq node_pairs
+    end
+    
+  end
   
 end
