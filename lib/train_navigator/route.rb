@@ -1,5 +1,5 @@
 module TrainNavigator
-  class Map
+  class Route
     
     def initialize(tokens)
 
