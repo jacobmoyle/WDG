@@ -18,10 +18,24 @@ Or install it yourself as:
 
 ## Usage
 
-Create a new `Map` with an `Array` of connected `Nodes` and their `Weights`.
+A new `Map` may be created with an `Array` of `Weighted` `Nodes`.
 
 ```ruby
 map = TrainNavigator::Map.new ['AB5', 'BC4', 'CD8', 'DC8', 'DE6', 'AD5', 'CE2', 'EB3', 'AE7']
+```
+
+A new `Route` may be created with an `Array` of `Nodes`:
+
+```ruby
+route = TrainNavigator::Route.new ['A', 'D', 'C']
+```
+
+### Distance
+
+Returns the total `Weight` of a `Route`:
+
+```ruby
+TrainNavigator::Calculate.distance(@map, route) #=> 13
 ```
 
 ## Development

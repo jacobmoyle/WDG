@@ -28,12 +28,12 @@ RSpec.describe TrainNavigator do
 
 #   #   3. The distance of the route A-D-C.
 #   # Output #3: 13
-#   describe 'Requirement #3:' do
-#     it 'returns distance of the route A-D-C.' do
-#       path = ['A', 'D', 'C']
-#       expect(@map.distance_of(path)).to eq(13)
-#     end
-#   end
+  describe 'Requirement #3:' do
+    it 'returns distance of the route A-D-C.' do
+      route = TrainNavigator::Route.new ['A', 'D', 'C']
+      expect(TrainNavigator::Calculate.distance(@map, route)).to eq 13
+    end
+  end
 
 #   # 4. The distance of the route A-E-B-C-D.
 #   # Output #4: 22

@@ -12,10 +12,17 @@ RSpec.describe TrainNavigator::Map do
 
   describe '#weight_of' do
 
+    before :all do
+      @map = TrainNavigator::Map.new(['AB2', 'BC8'])
+    end
+    
     it 'returns a weight' do
-      map = TrainNavigator::Map.new(['AB2', 'BC8'])
-      expect(map.weight_of('AB')).to eq 2
-      expect(map.weight_of('BC')).to eq 8
+      expect(@map.weight_of('AB')).to eq 2
+      expect(@map.weight_of('BC')).to eq 8
+    end
+
+    it 'returns nil if no weight found' do
+      expect(@map.weight_of('ED')).to eq nil
     end
 
   end

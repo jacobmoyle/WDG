@@ -7,7 +7,7 @@ module TrainNavigator
 
     def weight_of nodes
       edges = edges_where(nodes)
-      get_weight(edges[0])
+      edges.empty? ? nil : get_weight(edges[0])
     end
 
     private
