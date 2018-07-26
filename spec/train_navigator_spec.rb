@@ -46,12 +46,12 @@ RSpec.describe TrainNavigator do
 
 #   # 5. The distance of the route A-E-D.
 #   # Output #5: NO SUCH ROUTE
-#     describe 'Requirement #5:' do
-#       it 'returns an error for the distance of the route A-E-D' do
-#         bad_path = ['A', 'E', 'D']
-#         expect(@map.distance_of(bad_path)).to eq('NO SUCH ROUTE')
-#       end
-#     end
+    describe 'Requirement #5:' do
+      it 'returns an error for the distance of the route A-E-D' do
+        bad_route = TrainNavigator::Route.new ['A', 'E', 'D']
+        expect(TrainNavigator::Calculate.distance(@map, bad_route)).to eq('NO SUCH ROUTE')
+      end
+    end
 
 #   # 6. The number of trips starting at C and ending at C with a maximum of 3 stops.  In the sample data below, there are two such trips: C-D-C (2 stops). and C-E-B-C (3 stops).
 #   # Output #6: 2

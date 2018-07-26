@@ -2,15 +2,15 @@ module TrainNavigator
   module Calculate
 
     def self.distance map, route
-      # TODO: check invalid route above
       sum = 0
+      error = nil
 
-      # TODO: use reduce to remove result count?
       route.edges.each do |edge|
-        sum += map.weight_of(edge)
+        weight = map.weight_of(edge)
+        weight ? sum += weight : error = 'NO SUCH ROUTE'
       end
 
-      sum
+      error.nil? ? sum : error
     end
 
   end
