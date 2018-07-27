@@ -35,7 +35,45 @@ route = TrainNavigator::Route.new ['A', 'D', 'C']
 Returns the total `Weight` of a `Route`:
 
 ```ruby
-TrainNavigator::Calculate.distance(@map, route) #=> 13
+TrainNavigator::Calculate.distance(map, route) #=> 13
+```
+
+### Queries
+
+Find all potential Routes:
+
+```ruby
+routes = TrainNavigator::Query.where(map, 'C', 'C')
+```
+
+_Note: Currently a Route is limited to 8 nodes_
+
+### Additional Filters
+
+Returns `Integers`:
+
+#### Max Stops (AKA Nodes)
+
+```ruby
+routes.max_stops 3
+```
+
+#### Max Distance
+
+```ruby
+routes.max_distance 30
+```
+
+#### Exact
+
+```ruby
+routes.exactly 4
+```
+
+#### Shortest
+
+```ruby
+routes.shortest
 ```
 
 ## Development
