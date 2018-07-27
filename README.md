@@ -1,20 +1,28 @@
 # Train Navigator
 
-## Installation
+A Ruby interface for [Weighted Directed Graphs](https://genome.cshlp.org/content/9/1/79/F4.medium.gif).
 
-Add this line to your application's Gemfile:
+## Setup
 
-```ruby
-gem 'train_navigator'
+### Check out the Repo
+
+- [ ] Install dependencies
+
+```
+$ bin/setup
 ```
 
-And then execute:
+- [ ] Run to run the tests
 
-    $ bundle
+```
+$ rake spec
+```
 
-Or install it yourself as:
+For an interactive prompt that will allow you to experiment:
 
-    $ gem install train_navigator
+```
+$ bin/console
+```
 
 ## Usage
 
@@ -76,14 +84,22 @@ routes.exactly 4
 routes.shortest
 ```
 
-## Development
-
-- Check out the repo
-- Run `bin/setup` to install dependencies
-- Run `rake spec` to run the tests
-
-You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
 ## Contributing
 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+#### TODO:
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'train_navigator'
+```
+
+And then execute:
+
+    $ bundle
+
+Or navigate to the Repo and run
+
+    $ bundle
