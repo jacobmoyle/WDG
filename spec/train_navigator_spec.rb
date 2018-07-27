@@ -63,12 +63,11 @@ RSpec.describe TrainNavigator do
 
 #   # 7. The number of trips starting at A and ending at C with exactly 4 stops.  In the sample data below, there are three such trips: A to C (via B,C,D); A to C (via D,C,D); and A to C (via D,E,B).
 #   # Output #7: 3
-#   describe 'Requirement #7:' do
-#     it 'returns the number of trips starting at A and ending at C with exactly 4 stops.' do
-#       paths = @map.paths({ from: 'A', to: 'C' })
-#       expect(paths.exact( stops: 4 ).length).to eq(3)
-#     end
-#   end
+  describe 'Requirement #7:' do
+    it 'returns the number of trips starting at A and ending at C with exactly 4 stops.' do
+      expect(TrainNavigator::Search.exactly(@map, 'A', 'C', 4)).to eq 3
+    end
+  end
 
 # # 8. The length of the shortest route (in terms of distance to travel) from A to C.
 # # Output #8: 9
