@@ -4,15 +4,14 @@ A Ruby interface for [Weighted Directed Graphs](https://genome.cshlp.org/content
 
 ## Setup
 
-### Check out the Repo
-
-- [ ] Install dependencies
+1.  Navigate to `/train_navigator`
+2.  Install dependencies
 
 ```
 $ bin/setup
 ```
 
-- [ ] Run to run the tests
+3.  Run tests
 
 ```
 $ rake spec
