@@ -14,7 +14,7 @@ module TrainNavigator
     
     private
 
-    ROUTE_LIMIT = 5 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
+    ROUTE_LIMIT = 8 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
 
     def self.depth_first(node, goal, route='', &proc)
       proc.call(route) if node[:name] == goal[:name] && route.length > 1

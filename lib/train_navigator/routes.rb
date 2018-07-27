@@ -9,8 +9,12 @@ module TrainNavigator
       @routes = routes
     end
     
-    def max stops
+    def max_stops stops
       routes.select { |route| route.stops <= stops }.length
+    end
+
+    def max_distance weight
+      routes.select { |route| route.weight <= weight }.length
     end
 
     def exactly stops

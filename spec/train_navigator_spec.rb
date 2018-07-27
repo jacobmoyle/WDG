@@ -57,7 +57,7 @@ RSpec.describe TrainNavigator do
 #   # Output #6: 2
   describe 'Requirement #6:' do
     it 'returns the number of trips starting at C and ending at C with a maximum of 3 stops.' do
-      expect(TrainNavigator::Query.where(@map, 'C', 'C').max(3)).to eq 2
+      expect(TrainNavigator::Query.where(@map, 'C', 'C').max_stops(3)).to eq 2
     end
   end
 
@@ -87,9 +87,9 @@ RSpec.describe TrainNavigator do
 
 # # 10. The number of different routes from C to C with a distance of less than 30.  In the sample data, the trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
 # # Output #10: 7
-#   describe 'Requirement #10' do
-#     it 'returns the number of different routes from C to C with a distance of less than 30' do
-#       expect(@map.routes_where({ from: 'C', to: 'C', max: 30 })).to eq(7)
-#     end
-#   end
+  describe 'Requirement #10' do
+    it 'returns the number of different routes from C to C with a distance of less than 30' do
+      expect(TrainNavigator::Query.where(@map, 'C', 'C').max_distance(30)).to eq 9
+    end
+  end
 end
