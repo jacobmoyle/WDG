@@ -7,8 +7,6 @@ require "train_navigator/routes"
 require "train_navigator/calculate"
 require "train_navigator/query"
 
-require 'pry-byebug'
-
 module TrainNavigator
 
 end
