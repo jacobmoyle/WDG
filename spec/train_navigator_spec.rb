@@ -57,7 +57,7 @@ RSpec.describe TrainNavigator do
 #   # Output #6: 2
   describe 'Requirement #6:' do
     it 'returns the number of trips starting at C and ending at C with a maximum of 3 stops.' do
-      expect(TrainNavigator::Search.max_stops(@map, 'C', 'C', 3)).to eq 2
+      expect(TrainNavigator::Query.where(@map, 'C', 'C').max(3)).to eq 2
     end
   end
 
@@ -65,7 +65,7 @@ RSpec.describe TrainNavigator do
 #   # Output #7: 3
   describe 'Requirement #7:' do
     it 'returns the number of trips starting at A and ending at C with exactly 4 stops.' do
-      expect(TrainNavigator::Search.exactly(@map, 'A', 'C', 4)).to eq 3
+      expect(TrainNavigator::Query.where(@map, 'A', 'C').exactly(4)).to eq 3
     end
   end
 
@@ -73,17 +73,17 @@ RSpec.describe TrainNavigator do
 # # Output #8: 9
   describe 'Requirement #8' do
     it 'returns the length of the shortest route (in terms of distance to travel) from A to C.' do
-      expect(TrainNavigator::Search.shortest(@map, 'A', 'C' )).to eq 9
+      expect(TrainNavigator::Query.where(@map, 'A', 'C').shortest).to eq 9
     end
   end
 
 # # 9. The length of the shortest route (in terms of distance to travel) from B to B.
 # # Output #9: 9
-#   describe 'Requirement #9' do
-#     it 'returns the length of the shortest route (in terms of distance to travel) from B to B.' do
-#       expect(@map.shortest_route({ from: 'B', to: 'B' })).to eq(9)
-#     end
-#   end
+  # describe 'Requirement #9' do
+  #   it 'returns the length of the shortest route (in terms of distance to travel) from B to B.' do
+  #     expect(@map.shortest_route({ from: 'B', to: 'B' })).to eq(9)
+  #   end
+  # end
 
 # # 10. The number of different routes from C to C with a distance of less than 30.  In the sample data, the trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
 # # Output #10: 7
