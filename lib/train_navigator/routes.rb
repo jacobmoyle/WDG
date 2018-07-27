@@ -24,9 +24,7 @@ module TrainNavigator
     def shortest
       dist = routes.sample.weight
 
-      routes.each do |route|
-        dist = route.weight if route.weight < dist
-      end
+      routes.each { |route| dist = route.weight if route.weight < dist}
       
       dist
     end

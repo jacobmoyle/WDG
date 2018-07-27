@@ -6,6 +6,7 @@ module TrainNavigator
 
     attr_reader :nodes
     attr_accessor :weight
+    
     def initialize nodes, weight=nil
       @nodes = nodes
       @weight = weight
@@ -15,8 +16,7 @@ module TrainNavigator
       result = []
       
       nodes.each_with_index do |node, index|
-        next if last(index)
-        result << edge_where(node, index)
+        result << edge_where(node, index) unless last(index)
       end
 
       result

@@ -2,45 +2,37 @@ module TrainNavigator
   class Map
     
     def initialize tokens
-      # TODO: Make Edge class:
-      # Edge.weight; Edge.childrens; Edge.name; etc.
-      @edges = tokens
+      @edges = setup(tokens)
     end
 
     def weight_of nodes
-      edges = edges_where(nodes)
-      edges.empty? ? nil : get_weight(edges[0])
+      edge = edge_where(nodes)
+      edge ? edge.weight : nil
     end
 
     def to_hash
-      result = {}
+      hash = {}
 
       @edges.each do |edge|
-        nodes = get_nodes(edge)
-        result[nodes[0]] ||= new_edge(nodes[0])
-        result[nodes[0]][:children] << nodes[1]
+        hash[edge.from] ||= hashed_edge(edge.from)
+        hash[edge.from][:children] << edge.to
       end
 
-      result
+      hash
     end
 
     private
 
-    def new_edge node
+    def setup tokens
+      tokens.map { |token| TrainNavigator::Edge.new token }
+    end
+
+    def hashed_edge node
       { name: node, children:  [] }
     end
 
-    def edges_where(token)
-      @edges.select { |edge| get_nodes(edge) == token }
+    def edge_where nodes
+      @edges.select { |edge| edge.nodes == nodes }.first
     end
-
-    def get_nodes edge
-      edge.match(/[A-Z]+/).to_s
-    end
-
-    def get_weight edge
-      edge.match(/\d/).to_s.to_i
-    end
-
   end
 end

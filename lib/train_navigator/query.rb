@@ -14,12 +14,14 @@ module TrainNavigator
     
     private
 
-    ROUTE_LIMIT = 8 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
+    LENGTH_LIMIT = 8 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
 
     def self.depth_first(node, goal, route='', &proc)
-      proc.call(route) if node[:name] == goal[:name] && route.length > 1
+      if node[:name] == goal[:name] && route.length > 1
+        proc.call(route) 
+      end
       
-      unless route.length > ROUTE_LIMIT
+      if route.length <= LENGTH_LIMIT
         node[:children].each { |child| 
           depth_first(@graph[child], goal, route + child, &proc)
         }
@@ -27,8 +29,12 @@ module TrainNavigator
     end
 
     def self.new_route nodes, map
-      route = TrainNavigator::Route.new(nodes.split(''), @graph)
-      route.weight = TrainNavigator::Calculate.distance(map, route) if route
+      route = TrainNavigator::Route.new(nodes.split(''))
+      
+      if route
+        route.weight = TrainNavigator::Calculate.distance(map, route)
+      end
+      
       route
     end
     
