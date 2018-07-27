@@ -29,5 +29,13 @@ RSpec.describe TrainNavigator::Route do
     end
     
   end
+
+  describe '#stops' do
+    
+    it 'returns number of steps to end node, excluding the starting node' do
+      route = TrainNavigator::Route.new(['A', 'B', 'C'])
+      expect(route.stops).to eq 2
+    end
+  end
   
 end
