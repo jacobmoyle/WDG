@@ -55,12 +55,11 @@ RSpec.describe TrainNavigator do
 
 #   # 6. The number of trips starting at C and ending at C with a maximum of 3 stops.  In the sample data below, there are two such trips: C-D-C (2 stops). and C-E-B-C (3 stops).
 #   # Output #6: 2
-#   describe 'Requirement #6:' do
-#     it 'returns the number of trips starting at C and ending at C with a maximum of 3 stops.' do
-#       paths = @map.paths({ from: 'C', to: 'C' })
-#       expect(paths.max(stops: 3).length).to eq(2)
-#     end
-#   end
+  describe 'Requirement #6:' do
+    it 'returns the number of trips starting at C and ending at C with a maximum of 3 stops.' do
+      expect(TrainNavigator::Search.max_stops(@map, 'C', 'C', 3)).to eq 2
+    end
+  end
 
 #   # 7. The number of trips starting at A and ending at C with exactly 4 stops.  In the sample data below, there are three such trips: A to C (via B,C,D); A to C (via D,C,D); and A to C (via D,E,B).
 #   # Output #7: 3
