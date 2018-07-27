@@ -71,11 +71,11 @@ RSpec.describe TrainNavigator do
 
 # # 8. The length of the shortest route (in terms of distance to travel) from A to C.
 # # Output #8: 9
-#   describe 'Requirement #8' do
-#     it 'returns the length of the shortest route (in terms of distance to travel) from A to C.' do
-#       expect(@map.shortest_route({ from: 'A', to: 'C' })).to eq(9)
-#     end
-#   end
+  describe 'Requirement #8' do
+    it 'returns the length of the shortest route (in terms of distance to travel) from A to C.' do
+      expect(TrainNavigator::Search.shortest(@map, 'A', 'C' )).to eq 9
+    end
+  end
 
 # # 9. The length of the shortest route (in terms of distance to travel) from B to B.
 # # Output #9: 9

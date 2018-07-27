@@ -1,5 +1,10 @@
+# require 'forwardable'
+
 module TrainNavigator
   class Route
+
+    extend Forwardable
+    def_delegators :@nodes, :length
 
     def initialize tokens
       @nodes = tokens

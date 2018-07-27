@@ -12,10 +12,25 @@ module TrainNavigator
         route.length == stops  
       }.length
     end
+
+    def self.shortest map, start, goal, shortest=nil
+
+      where(map, start, goal).each do |route|
+        dist = TrainNavigator::Calculate.distance(map, route)
+        
+        shortest ||= dist
+
+        if dist < shortest
+          shortest = dist
+        end
+      end
+      
+      shortest
+    end
     
     private
 
-    ROUTE_LIMIT = 30 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
+    ROUTE_LIMIT = 5 # Cuts off inifinite route length, e.g. CBCBCBCBCB....
 
     def self.depth_first(node, goal, graph, route='', &proc)
       proc.call(route) if node[:name] == goal[:name] && route.length > 1
@@ -32,7 +47,7 @@ module TrainNavigator
       routes = []
 
       depth_first(graph[start], graph[goal], graph)  do |route| 
-        routes << route
+        routes << TrainNavigator::Route.new(route.split(''))
       end
 
       routes
